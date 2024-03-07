@@ -55,19 +55,27 @@ let finalCardList=""
 // Create a variable to save a random number
 let randomCard
 // Create a loop to select a random card from cardList, save selected card on finalCardList, and after, remove selectedCard from finalCardList
+/*
 while(cardList.length>0){
     randomCard=Math.floor(Math.random() * cardList.length);
     finalCardList=finalCardList+cardList[randomCard]
     cardList.splice(randomCard, 1);
 }
-/*
-for(x=0;x<4;x++){
-    randomCard=Math.floor(Math.random() * cardList.length);
-    finalCardList=finalCardList+cardList[randomCard]
-    cardList.splice(randomCard, 1);
-}
 */
+function getCards(player){
+    for(x=0;x<5;x++){
+        randomCard=Math.floor(Math.random() * cardList.length);
+        finalCardList=finalCardList+cardList[randomCard]
+        cardList.splice(randomCard, 1);
+    }
+    player.innerHTML=finalCardList
+    finalCardList=""
+}
 // Create a variable to find .cards-container
 let cardsCotainer=document.querySelector(".cards-container")
+// find players
+let player1=document.querySelector(".player-1")
+let player2=document.querySelector(".player-2")
 // Add finalCardList to cardsCotainer element
-cardsCotainer.innerHTML=finalCardList
+getCards(player1)
+getCards(player2)
